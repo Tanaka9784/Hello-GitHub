@@ -4,6 +4,7 @@ public class Hello
 
 	private static Hello hello;
 	private static String message;
+	private String something;
 
 	static{
 		hello = new Hello();
