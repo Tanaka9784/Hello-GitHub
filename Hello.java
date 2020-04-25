@@ -5,10 +5,14 @@
 public class Hello <T>{
 
 	//The meaning of type parameter T is nothing.
+	
+	public enum Greeting{
+		Hello, GoodMorning, GoodEvening;	
+	};
 
 	private static Hello<?> hello;
 	private String message;
-	private String something;
+	private T something;
 
 	static{
 		hello = new Hello<Object>();
@@ -16,7 +20,7 @@ public class Hello <T>{
 
 	private Hello(){
 		super();
-		this.message = "Hello world!";
+		//this.message = "Hello world!";
 	}
 
 	public static Hello getInstance(){
@@ -27,15 +31,22 @@ public class Hello <T>{
 		return this.message;
 	}
 	
+
+	public T getSomething(){
+		return this.something;
+	}
+
 	public void setMessage(String message){
 		this.message = message;
 	}
 
-	public void setSomething(String something){
+	public void setSomething(T something){
 		this.something = something;
 	}
 
 	public static void main(String[] args){
-		System.out.println(getInstance().getMessage());
+		Hello hello = getInstance();
+		hello.setMessage(Greeting.Hello + " World!");
+		System.out.println(hello.getMessage());
 	}
 }
